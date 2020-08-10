@@ -1,0 +1,23 @@
+<button type="submit"(click)='newCaseId()'>Hit</button>
+
+<div *ngIf = "showTable">
+    <table>
+    
+      <tr>
+        <th>Employee Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+      </tr>
+      <tr *ngFor= "let emp of employeList.data" >
+    
+        <td>{{emp.id}}</td>
+        <td>{{emp.employee_name}}</td>
+        <td>{{emp.employee_age}}</td>
+        <td>{{emp.employee_salary}}</td>
+    
+    
+      </tr>
+    </table>
+    </div>
+    
