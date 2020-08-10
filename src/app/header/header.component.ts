@@ -13,16 +13,18 @@ export class HeaderComponent implements OnInit {
   ngOnInit(){}
 
   homeRoute(){
-    this.router.navigate['/home'];
+    this.router.navigate(['/home']);
   }
   employeeRoute(){
-    this.router.navigate['/employee'];
+    console.log("employee route called");
+    this.router.navigate(['/employee']);
+  
   }
   customerRoute(){
-    this.router.navigate['/customer'];
+    this.router.navigate(['/customer']);
   }
   aboutRoute(){
-    this.router.navigate['/about'];
+    this.router.navigate(['/about']);
   }
 
   }
