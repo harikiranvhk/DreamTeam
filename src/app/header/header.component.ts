@@ -16,12 +16,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
   employeeRoute(){
-    console.log("employee route called");
+   
     this.router.navigate(['/employee']);
   
   }
   customerRoute(){
     this.router.navigate(['/customer']);
+    
   }
   aboutRoute(){
     this.router.navigate(['/about']);
