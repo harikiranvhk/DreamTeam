@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/customer']);
     
   }
+
+  studentRoute(){
+    this.router.navigate(['/student']);
+  }
   aboutRoute(){
     this.router.navigate(['/about']);
   }
