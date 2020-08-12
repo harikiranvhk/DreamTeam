@@ -6,15 +6,24 @@ import { AppService } from '../app.service';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
 })
-export class EmployeeComponent {
+export class EmployeeComponent implements OnInit{
 
   employeList:any;
   showTable:boolean=false;
+  ngOnInit() {
+    console.log("Employee Component OnInIt Called");
+
+  }
 
   constructor(private appService: AppService){
+    console.log("Employee Component Constructor Called");
     
 
 
+  }
+
+  someFun() {
+    // this.appService.getCaseById[Symbol].
   }
   
  

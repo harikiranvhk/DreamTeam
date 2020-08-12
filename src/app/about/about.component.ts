@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit(): void {
+    console.log("About Component Constructor Called");
+   }
+
+  ngOnInit(){
+    console.log("About Component OnInIt Called");
+
   }
+  
 
 }

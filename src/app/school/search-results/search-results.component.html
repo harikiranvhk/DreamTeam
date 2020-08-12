@@ -1,0 +1,31 @@
+<button
+ type="submit"(click)="studentResults()" class="button">Click
+</button>
+
+
+
+
+<br><br><br><br><br><br>
+
+<div *ngIf = "showTable">
+
+    
+    <table>
+    
+      <tr>
+        <th>Student Id</th>
+        <th>Student Name</th>
+        <th>Phone Number</th>
+        <th>Year</th>
+      </tr>
+      <tr *ngFor= "let std of studentResponse.data" >
+    
+        <td>{{std.studentId}}</td>
+        <td>{{std.studentName}}</td>
+        <td>{{std.studentPhoneNumber}}</td>
+        <td>{{std.year}}</td>
+    
+    
+      </tr>
+    </table>
+    </div>

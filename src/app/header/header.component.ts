@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) {
+    console.log("Header Constructor Called");
+   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    console.log("Header Component OnInIt Called");
+  }
 
   homeRoute(){
     this.router.navigate(['/home']);
@@ -24,13 +28,18 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/customer']);
     
   }
+  schoolRoute(){
+    this.router.navigate(['/school']);
+  }
 
   studentRoute(){
     this.router.navigate(['/student']);
   }
   aboutRoute(){
     this.router.navigate(['/about']);
+
   }
+
 
   }
 

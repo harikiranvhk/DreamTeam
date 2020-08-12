@@ -22,6 +22,7 @@ export class AppComponent {
   bananas='';
   count='';
   constructor(private appService: AppService){
+    console.log("App Constructor Called");
 
 
  }

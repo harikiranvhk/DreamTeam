@@ -5,6 +5,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AboutComponent } from './about/about.component';
+import{ SchoolComponent } from './school/school.component'
+import { SearchResultsComponent } from './school/search-results/search-results.component';
+  
+
 
 
 const routes: Routes = [
@@ -14,7 +18,14 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule)},
   {path:'customer',component:CustomerComponent},
-  {path:'about',component:AboutComponent}
+  {path:'about',component:AboutComponent},
+  {path:'school',component:SchoolComponent,children:[
+    {path:'', redirectTo:'search-results',pathMatch:'full'},
+
+    {path:'search-results',component:SearchResultsComponent}
+  ]},
+  {path:'student',loadChildren: () => import('./student/student.module').then(m => m.StudentModule)}
+
 ];
 
 @NgModule({
