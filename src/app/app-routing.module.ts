@@ -23,13 +23,11 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'school',component:SchoolComponent,children:[
     {path:'', redirectTo:'search-results',pathMatch:'full'},
-    
-
     {path:'search-results',component:SearchResultsComponent},
     {path:'create', component:CreateStudentComponent},
-    {path:'edit/:id',component:EditComponent}
+    {path:'edit/:studentId',component:EditComponent}
   ]},
-  {path:'student',loadChildren: () => import('./student/student.module').then(m => m.StudentModule)}
+  // {path:'student',loadChildren: () => import('./student/student.module').then(m => m.StudentModule)}
 
 ];
 
