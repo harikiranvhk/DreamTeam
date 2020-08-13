@@ -19,4 +19,14 @@ export class SchoolService {
     return result;
 
 }
+getStudentById(id:string){
+  console.log("called the required id")
+  let url:string=`http://localhost:3000/api/student/${id}`;
+  console.log(url);
+  let result=this.http.get(url);
+  console.log(result);
+  return result;
+  
+  
+}
 }

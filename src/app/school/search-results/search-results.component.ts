@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
@@ -11,7 +12,7 @@ export class SearchResultsComponent implements OnInit {
   showTable:boolean=false;
   studentResponse:any;
 
-  constructor(private schoolService:SchoolService) { }
+  constructor(private schoolService:SchoolService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -33,4 +34,14 @@ export class SearchResultsComponent implements OnInit {
     
     
   }
+
+  createFunction(){
+    console.log("hi");
+    this.router.navigate(['/school/create']);
+}
+
+editFunction(id:string){
+  // console.log(`/school/edit/${id}`)
+  this.router.navigate([`/school/edit/${id}`]);
+}
 }

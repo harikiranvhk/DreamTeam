@@ -3,6 +3,12 @@
 </button>
 
 
+<p>Click The Button to create</p>
+<br><br>
+<button (click)="createFunction()">Create</button>
+
+<p>click the button to edit</p>
+<br><br>
 
 
 <br><br><br><br><br><br>
@@ -17,6 +23,7 @@
         <th>Student Name</th>
         <th>Phone Number</th>
         <th>Year</th>
+        <th>Actions</th>
       </tr>
       <tr *ngFor= "let std of studentResponse.data" >
     
@@ -24,6 +31,7 @@
         <td>{{std.studentName}}</td>
         <td>{{std.studentPhoneNumber}}</td>
         <td>{{std.year}}</td>
+        <td><button type="submit"(click)='editFunction(std.studentId)'>Edit</button></td>
     
     
       </tr>

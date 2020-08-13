@@ -12,6 +12,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { AboutComponent } from './about/about.component';
 import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
+import { CreateStudentComponent } from './school/create-student/create-student.component';
+import { EditComponent } from './school/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SearchResultsComponent } from './school/search-results/search-results.c
     CustomerComponent,
     AboutComponent,
     SchoolComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    CreateStudentComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
