@@ -39,6 +39,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/about']);
 
   }
+  guestRoute(){
+    this.router.navigate(['/guest']);
+  }
 
 
   }

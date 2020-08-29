@@ -1,0 +1,13 @@
+<table *ngIf="showTable">
+
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Year</th>
+    </tr>
+  <tr *ngFor="let fd of footerInfo.data">
+    <td>{{fd.studentId}}</td>
+    <td>{{fd.studentName}}</td>
+    <td>{{fd.year}}</td>
+  </tr>  
+  </table>

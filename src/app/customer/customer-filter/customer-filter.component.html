@@ -1,0 +1,11 @@
+<form [formGroup]="customerForm">
+
+    <input type="number" name="age" id="age" formControlName="age"> 
+    <!-- <input type="number" name="year" id="year" formControlName="year"> -->
+
+    <button type="submit" (click)="searchByAge()">search</button>
+    <br><br>
+
+    <button type="submit"(click)="deleteByAge()">Delete</button>
+   
+</form>

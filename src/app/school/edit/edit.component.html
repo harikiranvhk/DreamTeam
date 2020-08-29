@@ -1,1 +1,52 @@
-<p>edit works!</p>
+
+<form [formGroup]="studentEditForm"> 
+    <label for="studentId">Student ID</label>
+    <input type="text" name="studentId" (keyup)="onKey($event)" id="studentId" formControlName="studentId">
+    <div *ngIf="!studentEditForm.controls.studentId.valid && studentEditForm.controls.studentId.errors.required">
+        <p>This Field Is Required</p>
+        
+    </div>
+    <div *ngIf="!studentEditForm.controls.studentId.valid && studentEditForm.controls.studentId.errors.minlength">
+        <p>Entry Should be Min 3 </p>
+    </div>
+
+    <div *ngIf="!studentEditForm.controls.studentId.valid && studentEditForm.controls.studentId.errors.maxlength">
+        <p>Entry Should be Max 7 </p>
+    </div>
+    <br>
+
+
+    <br>
+    <br>
+    <label for="studentName">Student Name</label>
+    <input type="text" name="studentName" id="studentName" formControlName="studentName">
+    <br>
+    <br>
+    <br>
+    <label for="studentPhoneNumber">Student Phone Number</label>
+    <input type="text" name="studentPhoneNumber" id="studentPhoneNumber" formControlName="studentPhoneNumber">
+    <br>
+    <br>
+    <label for="country">Country</label>
+    <input type="text" name="country" id="country" formControlName="country">
+    <br>
+    <br>
+    <br>
+
+    <label for="course">Course</label>
+    <input type="text" name="course" id="course" formControlName="course">
+<br>
+<br> 
+<br>
+    <label for="year">Year</label>
+    <input type="text" name="year" id="year" formControlName="year">
+
+    <br>
+    <br>
+    <br>
+
+
+    <button [disabled]="!studentEditForm.valid" type="submit"(click)="updateStudent($event)">Submit Form</button>
+</form>
+
+

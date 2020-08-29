@@ -9,6 +9,8 @@ import{ SchoolComponent } from './school/school.component'
 import { SearchResultsComponent } from './school/search-results/search-results.component';
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
+import { GuestComponent} from './guest/guest.component';
+
   
 
 
@@ -17,6 +19,7 @@ const routes: Routes = [
   {path:'', redirectTo:'/home',pathMatch:'full'},
   {path:'employee', component:EmployeeComponent},
   {path:'footer',component:FooterComponent},
+  {path:'guest', component:GuestComponent},
   {path:'home',component:HomeComponent},
   {path:'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule)},
   {path:'customer',component:CustomerComponent},

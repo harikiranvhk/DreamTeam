@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
@@ -12,9 +12,17 @@ export class SearchResultsComponent implements OnInit {
   showTable:boolean=false;
   studentResponse:any;
 
-  constructor(private schoolService:SchoolService,private router:Router) { }
+  constructor(private schoolService:SchoolService,private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams
+    // .filter(params=> params.search)
+    .subscribe(params=>{
+      console.log(params);
+      if(params.search) {
+        this.studentResults();
+      }
+    })
 
     
 
@@ -43,5 +51,11 @@ export class SearchResultsComponent implements OnInit {
 editFunction(id:string){
   // console.log(`/school/edit/${id}`)
   this.router.navigate([`/school/edit/${id}`]);
+}
+deleteStudent(id:string){
+  this.schoolService.deleteData(id).subscribe(res=>{
+   console.log(res)
+   this.studentResults();
+  })
 }
 }

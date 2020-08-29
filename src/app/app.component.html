@@ -1,50 +1,29 @@
-<!-- <h3>My Dream Team</h3>
-<br>
-<br>
-
-<button type="submit"(click)="attackers('messi','ronaldo','maharez')"
-  style="background-color:red;">Attackers</button>
-<button type="submit"(click)="midfielder('KDB','kroos','Dinho')"
-  style="background-color:skyblue;">Midfield</button>
-<button type="submit"
-  style="background-color:yellowgreen;">Defenders</button>
-  <br><br>
-<input type="number"[(ngModel)]='num'>{{num}}
-<br>
-<input type="number"[(ngModel)]='age'>{{age}}
-<br><br>
-<button type="submit"(click)='totalValue()'>add</button>{{total}}
-
-
-
-
-<input type="number"[(ngModel)]='apples'>{{apples}}
-<input type="number"[(ngModel)]='bananas'>{{bananas}}
-
-<button type="submit"(click)='totalFruits()'>ClickMe</button>{{count}} -->
-
 
 <app-header></app-header>
-
-
-
-
-
-<!-- (1) new button is created with a name hit and a click is assigned to it with the function 'newCaseId'
-now we go to the component to create the function so that we can assign 
-it to the button we created here -->
-
-<!-- {{employeList.data | json}} -->
-<!-- <app-employee></app-employee> -->
+<br>
+<br>
 <router-outlet></router-outlet>
 
-
-<br>
-<br>
-<br>
-<br>
+{{loading}}
+<div class="comp-overlay" *ngIf="loading" role="img" ><img style="margin:10% 40%;height:10%;"
+  src="assets/img/loader.gif" aria-label="loading" />
+</div>
 <br>
 <br><br>
 <br>
 <br>
 <app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+<button type="submit" (click)="twoWay()">Two way data binding</button>
+
+<h1>{{myId}}</h1>
+
+<input type="text" [(ngModel)]="myId" name="myId" id="myId">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { SpinnerService } from '../sharedService/spinner.service';
 
 @Component({
   selector: 'app-employee',
@@ -7,7 +8,7 @@ import { AppService } from '../app.service';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit{
-
+  newEmpList:any;   
   employeList:any;
   showTable:boolean=false;
   ngOnInit() {
@@ -15,7 +16,7 @@ export class EmployeeComponent implements OnInit{
 
   }
 
-  constructor(private appService: AppService){
+  constructor(private appService: AppService, private spinner:SpinnerService){
     console.log("Employee Component Constructor Called");
     
 
@@ -31,6 +32,7 @@ export class EmployeeComponent implements OnInit{
     //(2) so after clicking the button we created in the html it redirects us to the this function cuz this function is assinged to the button when clicked
     //(3) now we generate a service and add the constructor which creates instance between service and compontent
     console.log('');
+    this.spinner.loadSpinner(true);
     this.appService.newCaseName()
     .subscribe(result=>{
       // so this.appservice refers to the serrvice file and the function is the one we created in service
@@ -39,25 +41,39 @@ export class EmployeeComponent implements OnInit{
       //printing or not to make sure wedid everything right
   
   console.log(result);
-  
+  this.spinner.loadSpinner(false);
   this.employeList=result;
   console.log(this.employeList);
   this.showTable=true;
   console.log(this.employeList.data.length);
-  for(let i =0; i<this.employeList.data.length; i++){
-    if (this.employeList.data[i].employee_age<=50) {
-      console.log(this.employeList.data[i].employee_age,'Young');
-      
-    } else {
-      console.log(this.employeList.data[i].employee_age,'Older');
-      
+
+  this.employeList.data.forEach(employee => {
+    console.log(employee)
+    if(employee.employee_age<=40){
+    let status = "young"
+    let emp ={...employee,ageGroup:status}
+    this.newEmpList.push(emp)
     }
-    // if (this.employeList.data[i].employee_age<=50) {
-    //   console.log(this.employeList.data[i].employee_age,'Young');
-    //   }
-    // console.log(this.employeList.data[i].employee_age);
-    // this.employeList[i];
-  }
+    else{
+      let status = "Old"
+      let emp ={...employee,ageGroup:status}
+      this.newEmpList.push(emp)
+    }
+  });
+  // for(let i =0; i<this.employeList.data.length; i++){
+  //   if (this.employeList.data[i].employee_age<=50) {
+  //     console.log(this.employeList.data[i].employee_age,'Young');
+      
+  //   } else {
+  //     console.log(this.employeList.data[i].employee_age,'Older');
+      
+  //   }
+  //   // if (this.employeList.data[i].employee_age<=50) {
+  //   //   console.log(this.employeList.data[i].employee_age,'Young');
+  //   //   }
+  //   // console.log(this.employeList.data[i].employee_age);
+  //   // this.employeList[i];
+  // }
   
     })
   }

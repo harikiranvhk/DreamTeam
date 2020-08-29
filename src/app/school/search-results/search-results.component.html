@@ -3,7 +3,7 @@
 </button>
 
 
-<p>Click The Button to create</p>
+<p>Click The Button to Generate</p>
 <br><br>
 <button (click)="createFunction()">Create</button>
 
@@ -31,7 +31,9 @@
         <td>{{std.studentName}}</td>
         <td>{{std.studentPhoneNumber}}</td>
         <td>{{std.year}}</td>
-        <td><button type="submit"(click)='editFunction(std.studentId)'>Edit</button></td>
+        <td><button type="submit"(click)='editFunction(std.studentId)'>Edit</button>
+          <button type="submit"(click)='deleteStudent(std.studentId)'>Delete</button>
+        </td>
     
     
       </tr>

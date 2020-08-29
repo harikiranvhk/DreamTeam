@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SchoolService } from '../school/school.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -6,16 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() {
+footerInfo:any;
+showTable:boolean=false;
+guestForm:FormGroup
+  constructor(private schoolService:SchoolService) {
     console.log("Footer Constructor Called");
    }
 
   ngOnInit(){
     
       console.log("Footer Component OnInIt Called");
-  
-    }
+  }
+  footerData(){
+    console.log('Hi')
+  }
+    
   }
 
 

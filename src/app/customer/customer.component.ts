@@ -1,19 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { SchoolService } from "../school/school.service";
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  selector: "app-customer",
+  templateUrl: "./customer.component.html",
+  styleUrls: ["./customer.component.scss"],
 })
 export class CustomerComponent implements OnInit {
+  constructor() {}
 
-  constructor() { 
-    console.log("Customer Component Constructor Called");
-  }
-
-  ngOnInit() {
-    console.log("Customer Component OnInIt Called");
-
-  }
-
+  ngOnInit() {}
 }

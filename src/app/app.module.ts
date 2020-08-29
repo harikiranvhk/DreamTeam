@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +13,11 @@ import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GuestComponent } from './guest/guest.component';
+import { CustomerFilterComponent } from './customer/customer-filter/customer-filter.component';
+import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
+import { FooterSplitComponent } from './footer-split/footer-split.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,18 @@ import { EditComponent } from './school/edit/edit.component';
     SchoolComponent,
     SearchResultsComponent,
     CreateStudentComponent,
-    EditComponent
+    EditComponent,
+    GuestComponent,
+    CustomerFilterComponent,
+    CustomerTableComponent,
+    FooterSplitComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-  
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

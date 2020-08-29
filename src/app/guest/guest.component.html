@@ -1,0 +1,7 @@
+
+<form  [formGroup]="guestForm">
+<input type="number" name="age" id="age" formControlName="age">
+<input type="number" name="year" id="year" formControlName="year">
+<input type="number" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber">
+<input (click)="searchGuest()" type="submit" value="submit">
+</form>

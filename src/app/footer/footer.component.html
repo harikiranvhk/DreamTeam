@@ -1,12 +1,10 @@
-<html>
-<body>
 
-<h1>Footer</h1>
 
-<footer>
-  <p>This is footer <br>
-  </p>
-</footer>
 
-</body>
-</html>
+<form [formGroup]="guestForm">
+
+  <input type="number" name="guest" id="guest">
+<input (click)="footerData()" type="submit" value="Get Value">
+ 
+</form>
+<app-footer-split></app-footer-split>

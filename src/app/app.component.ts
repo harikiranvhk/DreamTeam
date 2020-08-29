@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { $ } from 'protractor';
 import { AppService } from './app.service';
+import { SpinnerService } from './sharedService/spinner.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'dreamteam';
   name= '' ; 
   surname='';
@@ -18,15 +19,26 @@ export class AppComponent {
   employeList:any;
   showTable:boolean=false;
 
+  myId:number=10;
+  loading:boolean;
+  
+
   apples='';
   bananas='';
   count='';
-  constructor(private appService: AppService){
+  constructor(private appService: AppService , private spinner:SpinnerService){
     console.log("App Constructor Called");
 
 
- }
 
+
+ }
+ngOnInit(){
+  this.spinner.cast.subscribe(res=>{
+   let loading=res
+   console.log(loading)
+  })
+}
 
 //   attackers(lw:string,st:string,rw:string){
 
@@ -97,6 +109,14 @@ loopFunction(){
   
 }
 
+
+
+twoWay(){
+
+  this.myId=this.myId * 2;
+  
+  console.log(this.myId)
+}
 
 }
 
