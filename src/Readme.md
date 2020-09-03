@@ -70,3 +70,11 @@ The data saved is in the var and the (id) is the data that is passed to the url
 Programatic Routing : 
 
 this.router.navigate in header.component.ts refers to programmatic routing
+
+=>adding data into store
+//dispatch an action
+//action will call reducer
+//reducer will update store
+
+=>receiving data into component from store
+//just subscribe store variable in ngOnInIt in the component.

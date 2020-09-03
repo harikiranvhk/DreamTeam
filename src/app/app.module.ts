@@ -18,6 +18,8 @@ import { GuestComponent } from './guest/guest.component';
 import { CustomerFilterComponent } from './customer/customer-filter/customer-filter.component';
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
 import { FooterSplitComponent } from './footer-split/footer-split.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './reducer';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { FooterSplitComponent } from './footer-split/footer-split.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(appReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

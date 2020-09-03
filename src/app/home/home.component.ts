@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, State } from '@ngrx/store';
+import { AppState } from '../reducer';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { 
+  constructor(private store:Store<AppState>) { 
 console.log("Home component Constructor Called");
 
 
   }
 
   ngOnInit() {
-    console.log("Home Component OnInIt Called");
+    this.store.select(state=>state.homeState.idList).subscribe(res=>{
+      console.log(res);
+    })
   }
 
 }

@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedServiceService } from '../sharedService/shared-service.service';
-import { FooterServiceService } from '../footer-service.service'
+import { FooterServiceService } from '../footer-service.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../reducer';
+import { LOAD_SPINNER, STUDENT_ID_LIST } from '../action';
+
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +14,8 @@ export class SchoolService {
   constructor(
     private http: HttpClient,
     private sharedServiceService: SharedServiceService,
-    private footerService:FooterServiceService
+    private footerService:FooterServiceService,
+    private store:Store<AppState>,
   ) {}
 
   getAllStudents() {
@@ -87,13 +92,21 @@ export class SchoolService {
 
 
  getDataById(){
-  let res = this.http.get("http://localhost:3000/api/getAllIds");
-  return res
-
+  let res = this.http.get("http://localhost:3000/api/getAllIds").subscribe(res=>{
+    this.store.dispatch({type:STUDENT_ID_LIST,payload:res});
+    this.store.dispatch({type:LOAD_SPINNER,payload:false});
+    }, (err)=> {
+      console.log(err);
+      this.store.dispatch({type:LOAD_SPINNER,payload:false});
+    });
  }
+ 
  getInfoById(id:any){
-   let res = this.http.get(`http://localhost:3000/api/student/${id}`);
-   return res
+   let res = this.http.get(`http://localhost:3000/api/student/${id}`).subscribe((res) => {
+    this.store.dispatch({type:LOAD_SPINNER,payload:false})
+    return res  
+  });
+ 
  }
  deleteData(id:string){
    let res = this.http.delete(`http://localhost:3000/api/student/${id}`);
