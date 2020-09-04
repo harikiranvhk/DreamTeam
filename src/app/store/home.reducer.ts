@@ -1,12 +1,14 @@
-import { LOAD_SPINNER, STUDENT_ID_LIST } from '../action';
+import { LOAD_SPINNER, STUDENT_ID_LIST,STUDENT_BY_ID } from '../action';
 
 export interface HomeState {
   loading: boolean;
   idList:any;
+  student:any;
 }
 export const HOME_INIITIALSTATE: HomeState = {
   loading: false,
-  idList:[]
+  idList:[],
+  student:{}
 };
 export function homeReducer(state = HOME_INIITIALSTATE, action) {
   // debugger;
@@ -17,6 +19,10 @@ export function homeReducer(state = HOME_INIITIALSTATE, action) {
       case STUDENT_ID_LIST:
       return { ...state, idList: action.payload };
       break;
+      case STUDENT_BY_ID:
+        return { ...state, student: action.payload };
+        break;
+  
 
     default:
       return state;

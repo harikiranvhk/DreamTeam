@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
     this.store
       .select((state) => state.homeState.loading)
       .subscribe((res) => {
+        this.loading=res;
         console.log('store Variable',res);
       });
     this.spinner.cast.subscribe((res) => {

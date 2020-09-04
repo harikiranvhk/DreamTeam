@@ -40,12 +40,17 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/student"]);
   }
   aboutRoute() {
+    console.log('1');
     this.store.dispatch({ type: LOAD_SPINNER, payload: true });
+    console.log('2');
     this.schoolService.getDataById();
     this.router.navigate(["/about"]);
   }
   guestRoute() {
     this.router.navigate(["/guest"]);
+  }
+  staffRoute(){
+    this.router.navigate(["/staff"]);
   }
 }
 

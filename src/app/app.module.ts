@@ -20,6 +20,7 @@ import { CustomerTableComponent } from './customer/customer-table/customer-table
 import { FooterSplitComponent } from './footer-split/footer-split.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './reducer';
+import { StaffModule } from './staff/staff.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { appReducer } from './reducer';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    StaffModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer)
   ],

@@ -4,7 +4,7 @@ import { SharedServiceService } from '../sharedService/shared-service.service';
 import { FooterServiceService } from '../footer-service.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducer';
-import { LOAD_SPINNER, STUDENT_ID_LIST } from '../action';
+import { LOAD_SPINNER, STUDENT_ID_LIST, STUDENT_BY_ID } from '../action';
 
 
 @Injectable({
@@ -92,19 +92,22 @@ export class SchoolService {
 
 
  getDataById(){
+   console.log('3');
   let res = this.http.get("http://localhost:3000/api/getAllIds").subscribe(res=>{
+    console.log("4")
     this.store.dispatch({type:STUDENT_ID_LIST,payload:res});
+    console.log("5");
     this.store.dispatch({type:LOAD_SPINNER,payload:false});
     }, (err)=> {
       console.log(err);
       this.store.dispatch({type:LOAD_SPINNER,payload:false});
     });
  }
- 
+
  getInfoById(id:any){
    let res = this.http.get(`http://localhost:3000/api/student/${id}`).subscribe((res) => {
-    this.store.dispatch({type:LOAD_SPINNER,payload:false})
-    return res  
+    this.store.dispatch({type:LOAD_SPINNER,payload:false});
+    this.store.dispatch({type:STUDENT_BY_ID , payload:res});
   });
  
  }

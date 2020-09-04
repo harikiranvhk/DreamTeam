@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { SchoolService } from "../school/school.service";
 import { SpinnerService } from "../sharedService/spinner.service";
-import { Store, State } from '@ngrx/store';
+import { Store, State, select } from '@ngrx/store';
 import { AppState } from '../reducer';
-import { LOAD_SPINNER } from '../action';
+import { LOAD_SPINNER, STUDENT_BY_ID } from '../action';
 
 
 @Component({
@@ -25,11 +25,20 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.store.select(state=>state.homeState.idList).subscribe(res=>{
      console.log(res); 
+     console.log("5");
      this.idList=res;
     })
+    this.store.select(state=>state.homeState.student).subscribe(res=>{
+      this.studentData=res;
+      this.showData=true;
+
+      
+    })
   }
+
 
   // getallIds() {
   //   this.spinner.loadSpinner(true);
@@ -43,6 +52,7 @@ export class AboutComponent implements OnInit {
   idChanged(id: any) {
     // this.spinner.loadSpinner(true);
     this.store.dispatch({ type: LOAD_SPINNER, payload: true });
-    this.studentData = this.schoolService.getInfoById(id);
+   
+  this.schoolService.getInfoById(id);
   }
 }

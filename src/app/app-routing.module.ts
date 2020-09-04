@@ -10,6 +10,10 @@ import { SearchResultsComponent } from './school/search-results/search-results.c
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
 import { GuestComponent} from './guest/guest.component';
+import { StaffComponent } from './staff/staff.component';
+import { CreateComponent } from './staff/create/create.component';
+import { EditStaffComponent } from './staff/edit-staff/edit-staff.component';
+import { DeleteComponent } from './staff/delete/delete.component';
 
   
 
@@ -20,6 +24,8 @@ const routes: Routes = [
   {path:'employee', component:EmployeeComponent},
   {path:'footer',component:FooterComponent},
   {path:'guest', component:GuestComponent},
+  {path:'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)},
+  // {path: 'staff', loadChildren: './staff/staff.module#StaffModule'}
   {path:'home',component:HomeComponent},
   {path:'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule)},
   {path:'customer',component:CustomerComponent},
