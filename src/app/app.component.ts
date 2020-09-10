@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   caseNumber: number;
   employeList: any;
   showTable: boolean = false;
+  showNav:boolean;
 
   myId: number = 10;
   loading: boolean;
@@ -40,11 +41,20 @@ export class AppComponent implements OnInit {
       .subscribe((res) => {
         this.loading=res;
         console.log('store Variable',res);
-      });
-    this.spinner.cast.subscribe((res) => {
-      let loading = res;
-      //  console.log(loading)
-    });
+
+      }
+      );
+        this.store.select((state)=>state.homeState.loginStatus).subscribe(res=>{
+          this.showNav=res;
+        })
+
+
+
+
+    // this.spinner.cast.subscribe((res) => {
+    //   let loading = res;
+    //   //  console.log(loading)
+    // });
   }
 
   //   attackers(lw:string,st:string,rw:string){

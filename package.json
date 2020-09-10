@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
     "@ngrx/store": "^10.0.0",
+    "@ngrx/store-devtools": "^10.0.0",
     "angular-reactive-form": "^1.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

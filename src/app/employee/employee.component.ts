@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from '../app.service';
 import { SpinnerService } from '../sharedService/spinner.service';
 
@@ -7,7 +7,7 @@ import { SpinnerService } from '../sharedService/spinner.service';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
 })
-export class EmployeeComponent implements OnInit{
+export class EmployeeComponent implements OnInit,OnDestroy{
   newEmpList:any;   
   employeList:any;
   showTable:boolean=false;
@@ -77,5 +77,10 @@ export class EmployeeComponent implements OnInit{
   
     })
   }
-
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log('employee component destroyed')
+    
+  }
 }

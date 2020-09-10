@@ -1,5 +1,5 @@
 <select (change)=idChanged($event.target.value) placeholder="Select ID" name="studentID" id="studentID">
-    <option value={{studentId}} *ngFor="let studentId of idList.data">{{studentId}}</option>
+    <option value={{studentId}} *ngFor="let studentId of idList">{{studentId}}</option>
 
 </select>
-<div *ngIf="showData"> Name: {{studentData.data.studentName}}</div>
+<div *ngIf="showData"> Name: {{studentData.studentName}}</div>

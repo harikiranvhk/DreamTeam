@@ -28,9 +28,7 @@ export class EditComponent implements OnInit {
     this.createForm();
     this.id = this.route.snapshot.paramMap.get("studentId");
     console.log(this.id);
-    this.getStudentById();
-
-    
+    this.getStudentById();  
   }
 
   getStudentById() {

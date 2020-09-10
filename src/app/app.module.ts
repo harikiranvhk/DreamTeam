@@ -13,7 +13,7 @@ import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GuestComponent } from './guest/guest.component';
 import { CustomerFilterComponent } from './customer/customer-filter/customer-filter.component';
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
@@ -21,6 +21,10 @@ import { FooterSplitComponent } from './footer-split/footer-split.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './reducer';
 import { StaffModule } from './staff/staff.module';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LoginComponent } from './login/login.component';
+import { AppInterceptor } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { StaffModule } from './staff/staff.module';
     GuestComponent,
     CustomerFilterComponent,
     CustomerTableComponent,
-    FooterSplitComponent
+    FooterSplitComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +52,11 @@ import { StaffModule } from './staff/staff.module';
     FormsModule,
     StaffModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(appReducer)
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

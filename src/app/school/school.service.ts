@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SharedServiceService } from '../sharedService/shared-service.service';
 import { FooterServiceService } from '../footer-service.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducer';
 import { LOAD_SPINNER, STUDENT_ID_LIST, STUDENT_BY_ID } from '../action';
+import { ResponseModel } from '../Models/response.model';
 
 
 @Injectable({
@@ -93,9 +94,14 @@ export class SchoolService {
 
  getDataById(){
    console.log('3');
-  let res = this.http.get("http://localhost:3000/api/getAllIds").subscribe(res=>{
+   console.log("Headers called");
+   let token = sessionStorage.getItem('token')
+    // let headers = new HttpHeaders();
+    // headers.append('Authorization', token)
+    const h = new HttpHeaders({'Authorization': token})
+  let res = this.http.get<ResponseModel>("http://localhost:3000/api/getAllIds",{headers:h}).subscribe(res=>{
     console.log("4")
-    this.store.dispatch({type:STUDENT_ID_LIST,payload:res});
+    this.store.dispatch({type:STUDENT_ID_LIST,payload:res.data});
     console.log("5");
     this.store.dispatch({type:LOAD_SPINNER,payload:false});
     }, (err)=> {
@@ -105,9 +111,14 @@ export class SchoolService {
  }
 
  getInfoById(id:any){
-   let res = this.http.get(`http://localhost:3000/api/student/${id}`).subscribe((res) => {
+  let token = sessionStorage.getItem('token')
+  let headers = new HttpHeaders();
+  headers.append('Authorization', token)
+   let res = this.http.get<ResponseModel>(`http://localhost:3000/api/student/${id}`,{headers:headers}).subscribe((res) => {
     this.store.dispatch({type:LOAD_SPINNER,payload:false});
-    this.store.dispatch({type:STUDENT_BY_ID , payload:res});
+    this.store.dispatch({type:STUDENT_BY_ID , payload:res.data});
+  },(err)=>{
+    console.log(err)
   });
  
  }

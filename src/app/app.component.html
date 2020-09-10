@@ -1,12 +1,14 @@
 
-<app-header></app-header>
+<div *ngIf="showNav">
+  <app-header></app-header>
+</div>
 <br>
 <br>
 <router-outlet></router-outlet>
 
 {{loading}}
-<div class="comp-overlay" *ngIf="loading" role="img" ><img style="margin:10% 40%;height:10%;"
-  src="assets/img/loader.gif" aria-label="loading" />
+<div class="comp-overlay" *ngIf="loading" role="img"><img style="margin:10% 40%;height:10%;" src="assets/img/loader.gif"
+    aria-label="loading" />
 </div>
 <br>
 <br><br>
@@ -22,8 +24,8 @@
 
 
 
-<button type="submit" (click)="twoWay()">Two way data binding</button>
+<!-- <button type="submit" (click)="twoWay()">Two way data binding</button>
 
 <h1>{{myId}}</h1>
 
-<input type="text" [(ngModel)]="myId" name="myId" id="myId">
+<input type="text" [(ngModel)]="myId" name="myId" id="myId"> -->

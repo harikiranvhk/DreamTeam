@@ -7,9 +7,13 @@
   <li><a class="li" (click)="guestRoute()"></a>Guest</li>
   <li><a class="li" (click)="aboutRoute()">About</a></li>
   <li><a class="li" (click)="staffRoute()">Staff</a></li>
+  <li *ngIf="showUserAndLogout"><a> logged in as {{userDetails.userName}} </a></li>
+  <li><button *ngIf="showUserAndLogout" type="submit">Logout</button></li>
 
   
 </ul>
+
+<br><br>
 
 <br>
 

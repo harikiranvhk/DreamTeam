@@ -14,13 +14,15 @@ import { StaffComponent } from './staff/staff.component';
 import { CreateComponent } from './staff/create/create.component';
 import { EditStaffComponent } from './staff/edit-staff/edit-staff.component';
 import { DeleteComponent } from './staff/delete/delete.component';
+import { LoginComponent } from './login/login.component';
 
   
 
 
 
 const routes: Routes = [
-  {path:'', redirectTo:'/home',pathMatch:'full'},
+  {path:'', redirectTo:'/login',pathMatch:'full'},
+  {path:'login',component:LoginComponent},
   {path:'employee', component:EmployeeComponent},
   {path:'footer',component:FooterComponent},
   {path:'guest', component:GuestComponent},

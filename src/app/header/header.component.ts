@@ -11,6 +11,8 @@ import { LOAD_SPINNER } from '../action';
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  showUserAndLogout:boolean;
+  userDetails:any;
   constructor(
     private router: Router,
     private schoolService: SchoolService,
@@ -21,6 +23,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     console.log("Header Component OnInIt Called");
+    this.store.select(state=>state.homeState.userDetails).subscribe(res=>{
+    this.userDetails= res;
+    })
+    this.store.select(state=>state.homeState.loginStatus).subscribe(res=>{
+      this.showUserAndLogout= res;
+      })
   }
 
   homeRoute() {
