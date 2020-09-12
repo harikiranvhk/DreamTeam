@@ -1,12 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { SchoolService } from "../school.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
-import { ConditionalExpr } from '@angular/compiler';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ConditionalExpr } from "@angular/compiler";
+import { Store, State } from "@ngrx/store";
+import { AppState } from "src/app/reducer";
+import { DATA_TO_UPDATE } from 'src/app/action';
+
 // import { filter } from 'rxjs';
 // import 'rxjs/add/operator/filter';
 // import { map,filter } from 'rxjs/operators';
-
 
 @Component({
   selector: "app-edit",
@@ -15,77 +18,83 @@ import { ConditionalExpr } from '@angular/compiler';
 })
 export class EditComponent implements OnInit {
   id: string;
-  studentEditForm:FormGroup;
+  studentEditForm: FormGroup;
+
 
   constructor(
     private schoolService: SchoolService,
     private route: ActivatedRoute,
-    private fb:FormBuilder,
-    private router:Router
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
-    this.createForm();
-    this.id = this.route.snapshot.paramMap.get("studentId");
-    console.log(this.id);
-    this.getStudentById();  
+    
+    this.store
+      .select((state) => state.homeState.dataToUpdate)
+      .subscribe((res) => {
+        console.log("Why am I calling");
+        if (res) {
+          this.patchStudentValues(res);
+        }
+      });
+      this.studentEditForm.valueChanges.subscribe(formValueChanges=>{
+        console.log('am I calling');
+        this.store.dispatch({type:DATA_TO_UPDATE, payload:formValueChanges});
+      });
+      this.createForm();
   }
 
-  getStudentById() {
-    this.schoolService.getStudentById(this.id).subscribe((res) => {
-      console.log(res);
-      this.patchStudentValues(res);
+  createForm() {
+    this.studentEditForm = this.fb.group({
+      studentId: [
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(7),
+          Validators.minLength(3),
+        ]),
+      ],
+      studentName: [""],
+      studentPhoneNumber: [""],
+      country: [""],
+      course: [""],
+      year: [""],
     });
   }
-  createForm(){
-    this.studentEditForm=this.fb.group({
-      studentId:['',Validators.compose([Validators.required,Validators.maxLength(7),Validators.minLength(3)])],
-      studentName:['',],
-      studentPhoneNumber:[''],
-      country:[''],
-      course:[''],
-      year:['']
-    })
-  }
-  
-  updateStudent(e:any){
-    console.log(this.studentEditForm);
-    e.preventDefault()
-    if(this.studentEditForm.valid){
-      this.router.navigate(['/school/search-results'] , { queryParams: { search: true } });
 
-      this.schoolService.getUpdatedStudent(this.studentEditForm.value)
-    .subscribe((res)=>{
-      
-    console.log(res)
+  updateStudent(e: any) {
+    console.log(this.studentEditForm);
+    e.preventDefault();
+    if (this.studentEditForm.valid) {
+      this.router.navigate(["/school/search-results"], {
+        queryParams: { search: true },
+      });
+
+      this.schoolService
+        .getUpdatedStudent(this.studentEditForm.value)
+        .subscribe((res) => {
+          console.log(res);
+        });
     }
-    
-    )  
-    }
-    
-    
   }
-  onKey(event: Event){
-    console.log('id field triggered');
+  onKey(event: Event) {
+    console.log("id field triggered");
     // console.log(event);
     // event.preventDefault();
   }
 
-  patchStudentValues(result:any){
+  patchStudentValues(result: any) {
     console.log(result);
 
-this.studentEditForm.patchValue({
-
-  studentId:result.data.studentId,
-  studentName:result.data.studentName,
-  studentPhoneNumber:result.data.studentPhoneNumber,
-  country:result.data.country,
-  course:result.data.course,
-  year:result.data.year
-})
-
+    this.studentEditForm.patchValue({
+      studentId: result.studentId,
+      studentName: result.studentName,
+      studentPhoneNumber: result.studentPhoneNumber,
+      country: result.country,
+      course: result.course,
+      year: result.year,
+    });
   }
 }
-
-
-  

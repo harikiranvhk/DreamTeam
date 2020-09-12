@@ -15,6 +15,7 @@ import { CreateComponent } from './staff/create/create.component';
 import { EditStaffComponent } from './staff/edit-staff/edit-staff.component';
 import { DeleteComponent } from './staff/delete/delete.component';
 import { LoginComponent } from './login/login.component';
+import { CanDeactivateGuard } from './canDeactivate.service';
 
   
 
@@ -36,7 +37,7 @@ const routes: Routes = [
     {path:'', redirectTo:'search-results',pathMatch:'full'},
     {path:'search-results',component:SearchResultsComponent},
     {path:'create', component:CreateStudentComponent},
-    {path:'edit/:studentId',component:EditComponent}
+    {path:'edit/:studentId',component:EditComponent, canDeactivate:[CanDeactivateGuard]}
   ]},
   // {path:'student',loadChildren: () => import('./student/student.module').then(m => m.StudentModule)}
 

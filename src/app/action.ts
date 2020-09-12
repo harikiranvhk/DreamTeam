@@ -4,4 +4,6 @@ export const STUDENT_BY_ID='STUDENT_BY_ID';
 export const GET_ALL_DATA='GET_ALL_DATA';
 export const GET_ALL_STUDENTS='GET_ALL_STUDENTS';
 export const USER_DETAILS='USER_DETAILS';
-export const LOGIN_STATUS="LOGIN_STATUS"
+export const LOGIN_STATUS="LOGIN_STATUS";
+export const DATA_TO_UPDATE='DATA_TO_UPDATE';
+export const DB_UPDATE_DATA='DB_UPDATE_DATA';

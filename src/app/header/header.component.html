@@ -1,14 +1,14 @@
 <ul> 
   <li><a class="li" (click)="homeRoute()">Home</a></li>
   <li><a class="li" (click)="employeeRoute()">Employee</a></li>
-  <li><a class="li" (click)="customerRoute()">Customer</a></li>
+  <li *ngIf="userDetails.role !== 'employee'"><a class="li" (click)="customerRoute()">Customer</a></li>
   <li><a class="li" (click)="schoolRoute()">School</a></li>
   <li><a class="li" (click)="studentRoute()">Student (LL)</a></li>
   <li><a class="li" (click)="guestRoute()"></a>Guest</li>
   <li><a class="li" (click)="aboutRoute()">About</a></li>
   <li><a class="li" (click)="staffRoute()">Staff</a></li>
   <li *ngIf="showUserAndLogout"><a> logged in as {{userDetails.userName}} </a></li>
-  <li><button *ngIf="showUserAndLogout" type="submit">Logout</button></li>
+  <li><button *ngIf="showUserAndLogout" type="submit" (click)="logOut()">Logout</button></li>
 
   
 </ul>

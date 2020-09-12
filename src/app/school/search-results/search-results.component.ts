@@ -49,8 +49,10 @@ export class SearchResultsComponent implements OnInit {
 }
 
 editFunction(id:string){
-  // console.log(`/school/edit/${id}`)
   this.router.navigate([`/school/edit/${id}`]);
+  this.schoolService.getStudentById(id);
+  // console.log(`/school/edit/${id}`)
+  
 }
 deleteStudent(id:string){
   this.schoolService.deleteData(id).subscribe(res=>{

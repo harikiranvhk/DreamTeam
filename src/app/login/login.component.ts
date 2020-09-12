@@ -24,7 +24,8 @@ createForm(){
 loginFunction(){
   console.log(this.loginForm.value);  
   let loginCredentials=this.loginForm.value;
-  this.loginService.getLoginCredentials(loginCredentials)
+  this.loginService.getLoginCredentials(loginCredentials);
+  
   
   
 }

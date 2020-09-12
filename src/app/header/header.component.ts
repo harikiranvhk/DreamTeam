@@ -4,6 +4,7 @@ import { SchoolService } from '../school/school.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducer';
 import { LOAD_SPINNER } from '../action';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: "app-header",
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private schoolService: SchoolService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private loginService: LoginService
   ) {
     console.log("Header Constructor Called");
   }
@@ -59,6 +61,9 @@ export class HeaderComponent implements OnInit {
   }
   staffRoute(){
     this.router.navigate(["/staff"]);
+  }
+  logOut(){
+    this.loginService.loggedOut();
   }
 }
 
