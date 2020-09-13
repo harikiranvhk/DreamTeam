@@ -34,6 +34,8 @@ dbData:any;
         currentRoute: ActivatedRouteSnapshot, 
         currentState: RouterStateSnapshot
     ): Observable<boolean>|Promise<boolean>|boolean {
+
+
         console.log('can deactivate got called')
         return false;
     }

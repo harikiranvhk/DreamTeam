@@ -16,6 +16,7 @@ import { EditStaffComponent } from './staff/edit-staff/edit-staff.component';
 import { DeleteComponent } from './staff/delete/delete.component';
 import { LoginComponent } from './login/login.component';
 import { CanDeactivateGuard } from './canDeactivate.service';
+import { AuthGaurd } from './canActivate.service';
 
   
 
@@ -24,18 +25,18 @@ import { CanDeactivateGuard } from './canDeactivate.service';
 const routes: Routes = [
   {path:'', redirectTo:'/login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
-  {path:'employee', component:EmployeeComponent},
+  {path:'employee', component:EmployeeComponent,canActivate:[AuthGaurd]},
   {path:'footer',component:FooterComponent},
-  {path:'guest', component:GuestComponent},
+  {path:'guest', component:GuestComponent,canActivate:[AuthGaurd]},
   {path:'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)},
   // {path: 'staff', loadChildren: './staff/staff.module#StaffModule'}
-  {path:'home',component:HomeComponent},
+  {path:'home',component:HomeComponent,canActivate:[AuthGaurd]},
   {path:'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule)},
-  {path:'customer',component:CustomerComponent},
-  {path:'about',component:AboutComponent},
-  {path:'school',component:SchoolComponent,children:[
+  {path:'customer',component:CustomerComponent,canActivate:[AuthGaurd]},
+  {path:'about',component:AboutComponent,canActivate:[AuthGaurd]},
+  {path:'school',component:SchoolComponent,canActivate:[AuthGaurd],children:[
     {path:'', redirectTo:'search-results',pathMatch:'full'},
-    {path:'search-results',component:SearchResultsComponent},
+    {path:'search-results',component:SearchResultsComponent,},
     {path:'create', component:CreateStudentComponent},
     {path:'edit/:studentId',component:EditComponent, canDeactivate:[CanDeactivateGuard]}
   ]},

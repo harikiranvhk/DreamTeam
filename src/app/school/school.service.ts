@@ -4,7 +4,7 @@ import { SharedServiceService } from '../sharedService/shared-service.service';
 import { FooterServiceService } from '../footer-service.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducer';
-import { LOAD_SPINNER, STUDENT_ID_LIST, STUDENT_BY_ID, DATA_TO_UPDATE, DB_UPDATE_DATA } from '../action';
+import { LOAD_SPINNER, STUDENT_ID_LIST, STUDENT_BY_ID, DATA_TO_UPDATE, DB_UPDATE_DATA, ALL_STUDENTS_LIST } from '../action';
 import { ResponseModel } from '../Models/response.model';
 
 
@@ -21,11 +21,11 @@ export class SchoolService {
 
   getAllStudents() {
     console.log("called all students");
-    let url: string = "http://localhost:3000/api/student";
-    console.log(url);
-    let result = this.http.get(url);
-    console.log(result);
-    return result;
+    let result = this.http.get<ResponseModel>("http://localhost:3000/api/student").subscribe(res=>{
+      this.store.dispatch({type:ALL_STUDENTS_LIST ,payload:res.data})
+    })
+    
+    
   }
   getStudentById(id: string) {
     this.http

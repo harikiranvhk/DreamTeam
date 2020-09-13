@@ -1,9 +1,12 @@
-
-<div *ngIf="showNav">
-  <app-header></app-header>
+<!-- <div *ngIf="showNav"> -->
+<app-header></app-header>
+<!-- </div> -->
+<br>
+<br>
+<div *ngIf="loginMessage">
+  <p>Please Login First</p>
 </div>
-<br>
-<br>
+
 <router-outlet></router-outlet>
 
 {{loading}}

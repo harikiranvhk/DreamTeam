@@ -5,6 +5,8 @@ studentId: string;
 studentName: string;
 studentPhoneNumber: string;
 year:number;
+_id:string;
+__v:string;
 
 constructor(){
     this.country=null;
@@ -13,5 +15,7 @@ constructor(){
     this.studentName=null;
     this.studentPhoneNumber=null;
     this.year=null;
+    this.__v=null;
+    this._id=null;
 }
 }

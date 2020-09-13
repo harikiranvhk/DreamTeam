@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppState } from 'src/app/reducer';
+import { Store } from '@ngrx/store';
+import { StudentModel } from 'src/app/Models/StudentModel';
+import { LOAD_SPINNER } from 'src/app/action';
 
 @Component({
   selector: 'app-search-results',
@@ -10,11 +14,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SearchResultsComponent implements OnInit {
 
   showTable:boolean=false;
-  studentResponse:any;
+  studentResponse:Array<StudentModel>;
 
-  constructor(private schoolService:SchoolService,private router:Router, private route:ActivatedRoute) { }
+
+  constructor(private schoolService:SchoolService,private router:Router, private route:ActivatedRoute, private store:Store<AppState>) { }
 
   ngOnInit(): void {
+
+    this.store.select(state=>state.homeState.allStudentsList).subscribe(res=>{
+      this.studentResponse=res;
+
+    })
     this.route.queryParams
     // .filter(params=> params.search)
     .subscribe(params=>{
@@ -33,12 +43,16 @@ export class SearchResultsComponent implements OnInit {
 
   studentResults(){
     console.log("student is called");
-    this.schoolService.getAllStudents().subscribe(result =>{
-      console.log(result);
-      this.showTable=true;
-      this.studentResponse=result;
+    this.store.dispatch({type:LOAD_SPINNER,payload:true})
+    this.schoolService.getAllStudents();
+    // this.schoolService.getAllStudents().subscribe(result =>{
 
-    });
+
+    //   console.log(result);
+    //   this.showTable=true;
+    //   this.studentResponse=result;
+
+    // });
     
     
   }

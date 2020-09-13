@@ -5,6 +5,7 @@ import { Store, State, select } from '@ngrx/store';
 import { AppState } from '../reducer';
 import { LOAD_SPINNER, STUDENT_BY_ID } from '../action';
 import { Subscription } from 'rxjs';
+import { StudentModel } from '../Models/StudentModel';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class AboutComponent implements OnInit, OnDestroy {
   idList:Array<string>;
-  studentData: any;
+  studentData: StudentModel;
   showData: boolean = false;
   private subscription: Subscription = new Subscription();
   constructor(

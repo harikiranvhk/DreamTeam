@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   employeList: any;
   showTable: boolean = false;
   showNav:boolean;
+  loginMessage:boolean;
 
   myId: number = 10;
   loading: boolean;
@@ -46,6 +47,11 @@ export class AppComponent implements OnInit {
       );
         this.store.select((state)=>state.homeState.loginStatus).subscribe(res=>{
           this.showNav=res;
+        })
+
+        this.store.select(state=>state.homeState.showLoginMessage).subscribe(res=>{
+          this.loginMessage=res;
+
         })
 
 

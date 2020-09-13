@@ -30,9 +30,9 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+    this.createForm();
     this.store
-      .select((state) => state.homeState.dataToUpdate)
+      .select((state) => state.homeState.dbUpdateData)
       .subscribe((res) => {
         console.log("Why am I calling");
         if (res) {
@@ -41,9 +41,9 @@ export class EditComponent implements OnInit {
       });
       this.studentEditForm.valueChanges.subscribe(formValueChanges=>{
         console.log('am I calling');
-        this.store.dispatch({type:DATA_TO_UPDATE, payload:formValueChanges});
+        this.store.dispatch({type:DATA_TO_UPDATE, payload:this.studentEditForm.getRawValue()});
       });
-      this.createForm();
+      
   }
 
   createForm() {
@@ -61,6 +61,8 @@ export class EditComponent implements OnInit {
       country: [""],
       course: [""],
       year: [""],
+      _id:[""],
+      __v:[""],
     });
   }
 
@@ -95,6 +97,8 @@ export class EditComponent implements OnInit {
       country: result.country,
       course: result.course,
       year: result.year,
+      _id:result._id,
+      __v:result.__v
     });
   }
 }

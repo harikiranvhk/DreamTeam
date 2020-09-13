@@ -13,7 +13,7 @@
 
 <br><br><br><br><br><br>
 
-<div *ngIf = "showTable">
+<!-- <div *ngIf = "showTable"> -->
 
     
     <table>
@@ -25,7 +25,7 @@
         <th>Year</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor= "let std of studentResponse.data" >
+      <tr *ngFor= "let std of studentResponse" >
     
         <td>{{std.studentId}}</td>
         <td>{{std.studentName}}</td>
@@ -38,4 +38,4 @@
     
       </tr>
     </table>
-    </div>
+    <!-- </div> -->

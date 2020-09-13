@@ -78,3 +78,9 @@ this.router.navigate in header.component.ts refers to programmatic routing
 
 =>receiving data into component from store
 //just subscribe store variable in ngOnInIt in the component.
+
+
+==>var a=1;
+var  b='1';
+console.log(a==b);
+console.log(a===b);
