@@ -17,6 +17,8 @@ import { DeleteComponent } from './staff/delete/delete.component';
 import { LoginComponent } from './login/login.component';
 import { CanDeactivateGuard } from './canDeactivate.service';
 import { AuthGaurd } from './canActivate.service';
+import { RoleBaseGuard } from './rolebase.canactivate.service';
+import { RoleBasedChildGuard } from './childgaurd.service';
 
   
 
@@ -32,13 +34,13 @@ const routes: Routes = [
   // {path: 'staff', loadChildren: './staff/staff.module#StaffModule'}
   {path:'home',component:HomeComponent,canActivate:[AuthGaurd]},
   {path:'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule)},
-  {path:'customer',component:CustomerComponent,canActivate:[AuthGaurd]},
+  {path:'customer',component:CustomerComponent,canActivate:[AuthGaurd,RoleBaseGuard]},
   {path:'about',component:AboutComponent,canActivate:[AuthGaurd]},
   {path:'school',component:SchoolComponent,canActivate:[AuthGaurd],children:[
     {path:'', redirectTo:'search-results',pathMatch:'full'},
     {path:'search-results',component:SearchResultsComponent,},
     {path:'create', component:CreateStudentComponent},
-    {path:'edit/:studentId',component:EditComponent, canDeactivate:[CanDeactivateGuard]}
+    {path:'edit/:studentId',component:EditComponent, canActivateChild:[RoleBasedChildGuard]}
   ]},
   // {path:'student',loadChildren: () => import('./student/student.module').then(m => m.StudentModule)}
 
