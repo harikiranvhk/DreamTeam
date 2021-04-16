@@ -9,7 +9,20 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+<<<<<<< Updated upstream
   ngOnInit(): void {
+=======
+
+
+
+
+  }
+
+  ngOnInit() {
+    this.store.select(state=>state.homeState.idList).subscribe(res=>{
+      console.log(res);
+    })
+>>>>>>> Stashed changes
   }
 
 }

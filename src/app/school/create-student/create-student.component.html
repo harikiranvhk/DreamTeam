@@ -1,0 +1,60 @@
+
+<form [formGroup]="studentCreateForm"> 
+    <label for="studentId">Student ID</label>
+    <input type="text" placeholder="Student ID" name="studentId" id="studentId" formControlName="studentId">
+    <div *ngIf="!studentCreateForm.controls.studentId.valid && studentCreateForm.controls.studentIdx.errors.required ">
+        <p>This Field Is Required</p>
+        
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <label for="studentName">Student Name</label>
+    <input type="text" placeholder="Student Name" name="studentName" id="studentName" formControlName="studentName">
+    <div *ngIf="!studentCreateForm.controls.studentName.valid && studentCreateForm.controls.studentName.errors.required ">
+        <p>This Field Is Required</p>
+        
+    </div>
+    <div *ngIf="!studentCreateForm.controls.studentName.valid && studentCreateForm.controls.studentName.errors.minlength ">
+        <p>Entry Should be Min 4 </p>
+    </div>
+
+    <div *ngIf="!studentCreateForm.controls.studentName.valid && studentCreateForm.controls.studentName.errors.maxlength ">
+        <p>Entry Should be Max 10 </p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <label for="studentPhoneNumber">Student Contact Number</label>
+    <input type="text" name="studentPhoneNumber" placeholder="Contact" id="studentPhoneNumber" formControlName="studentPhoneNumber">
+    <br>
+    <br>
+    <label for="country">Country</label>
+    <input type="text" placeholder="Country" name="country" id="country" formControlName="country">
+    <br>
+    <br>
+    <br>
+
+    <label for="course">Course</label>
+    <input type="text" placeholder="Course" name="course" id="course" formControlName="course">
+    <div *ngIf="!studentCreateForm.controls.course.valid && studentCreateForm.controls.course.errors.required ">
+        <p>This Field Is Required</p>
+    </div>   
+<br>
+<br> 
+<br>
+    <label for="salary">Salary</label>
+    <input type="text" placeholder="Salary" name="salary" id="salary" formControlName="salary">
+    <div *ngIf="!studentCreateForm.controls.year.valid && studentCreateForm.controls.year.errors.required ">
+        <p>This Field Is Required</p>
+        
+    </div>
+    <br>
+    <br>
+    <br>    
+
+
+    <button  type="submit"(click)="createStudent()">Submit Form</button></form>
+
+    <!-- [disabled]="!studentCreateForm.valid" -->

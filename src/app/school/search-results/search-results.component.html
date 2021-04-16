@@ -1,0 +1,47 @@
+<button
+ type="submit"(click)="studentResults()" class="button">Click
+</button>
+
+
+<p>Click The Button to Generate</p>
+<br><br>
+<button (click)="createFunction()">Create</button>
+
+<p>click the button to edit</p>
+<br><br>
+
+
+<br><br><br><br><br><br>
+
+<!-- <div *ngIf = "showTable"> -->
+
+    
+    <table>
+    
+      <tr>
+        <th>Student Id</th>
+        <th>Student Name</th>
+        <th>Phone Number</th>
+        
+        <th>Year</th>
+        
+        <th>Country</th>
+        <th>Actions</th>
+
+      </tr>
+      <tr *ngFor= "let std of studentResponse" >
+    
+        <td>{{std.studentId}}</td>
+        <td>{{std.studentName| uppercase}}</td>
+        <td>{{std.studentPhoneNumber}}</td>
+        
+        <td>{{std.year}}</td>
+        <td>{{std.country}}</td>
+        <td><button type="submit"(click)='editFunction(std.studentId)'>Edit</button>
+          <button type="submit"(click)='deleteStudent(std.studentId)'>Delete</button>
+        </td>
+    
+    
+      </tr>
+    </table>
+    <!-- </div> -->

@@ -20,9 +20,18 @@
     "@angular/platform-browser": "~9.0.5",
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
+<<<<<<< Updated upstream
+=======
+    "@ngrx/store": "^10.0.0",
+    "@ngrx/store-devtools": "^10.0.0",
+    "@ngx-formly/schematics": "^5.10.15",
+    "angular-reactive-form": "^1.0.0",
+>>>>>>> Stashed changes
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@ngx-formly/core": "^5.0.0",
+    "@ngx-formly/bootstrap": "^5.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.5",

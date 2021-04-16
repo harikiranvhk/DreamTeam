@@ -27,7 +27,15 @@ export class HeaderComponent implements OnInit {
   aboutRoute(){
     this.router.navigate(['/about']);
   }
+<<<<<<< Updated upstream
 
+=======
+  formsRoute(){
+    this.router.navigate(["/forms"]);
+  }
+  logOut(){
+    this.loginService.loggedOut();
+>>>>>>> Stashed changes
   }
 
 
